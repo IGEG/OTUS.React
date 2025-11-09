@@ -1,4 +1,4 @@
-import type { CatFact, CatFactProp } from "../Types/models";
+import type {  CatFactProp } from "../Types/models";
 
 const FactsComponent = ({facts}: CatFactProp) => {
 
