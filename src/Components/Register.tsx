@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../store/slices/authSlice'
+import { TextField, Button, Box, Paper, Typography, Alert } from '@mui/material'
 
 const Register = () => {
     const dispatch = useDispatch()
@@ -15,25 +16,37 @@ const Register = () => {
     }
 
     return (
-        <div>
-            <h1>Регистрация</h1>
+        <Box sx={{ maxWidth: 400, margin: '0 auto' }}>
+            <Paper elevation={3} sx={{ padding: 3 }}>
+                <Typography variant="h4" component="h1" gutterBottom>
+                    Регистрация
+                </Typography>
 
-            {user && (
-                <div>
-                    Зарегистрирован: <strong>{user}</strong>
-                </div>
-            )}
-            <div>
-                <input
-                    type="text"
-                    placeholder="Введите ваше имя"
+                {user && (
+                    <Alert severity="success" sx={{ mb: 2 }}>
+                        Уже зарегистрирован: <strong>{user}</strong>
+                    </Alert>
+                )}
+
+                <TextField
+                    fullWidth
+                    label="Введите ваше имя"
+                    variant="outlined"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    sx={{ mb: 2 }}
                 />
-            </div>
 
-            <button onClick={handleRegister}>Зарегистрироваться</button>
-        </div>
+                <Button
+                    fullWidth
+                    variant="contained"
+                    onClick={handleRegister}
+                    size="large"
+                >
+                    Зарегистрироваться
+                </Button>
+            </Paper>
+        </Box>
     )
 }
 
